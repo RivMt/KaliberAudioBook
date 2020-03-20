@@ -20,6 +20,6 @@
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:title="@string/main_menu"
-        android:icon="@drawable/ic_menu_black_24dp"
+        android:icon="@drawable/ic_folder_open_black_24dp"
         />
 </menu>
