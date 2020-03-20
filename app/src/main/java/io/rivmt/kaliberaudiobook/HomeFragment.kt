@@ -26,21 +26,30 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         //Set Main Image
+        val index = getMainAudioBookIndex()
+        setMainAudioBook(mAudioDataControl.mAudioList[index].ALBUM_ID, mAudioDataControl.mAudioList[index].ALBUM, mAudioDataControl.mAudioList[index].ARTIST)
+    }
+
+    //Set Main AudioBook
+    private fun setMainAudioBook(album_id:String, album:String, artist:String) {
         try {//Set AlbumArt as ImageView image, yet not null
             image_home_last_played.setImageBitmap(
                 Utility.getAlbumImage(
                     context,
-                    Integer.parseInt(mAudioDataControl.mAudioList[0].ALBUM_ID),
+                    Integer.parseInt(album_id),
                     160
                 )
             )
         } catch (e:NullPointerException) {
             Log.d(TAG, e.toString())
         }
-        try {
-            text_home_last_played.text = mAudioDataControl.mAudioList[0].ALBUM
-        } catch (e: IllegalStateException) {
-            Log.d(TAG, "Inserted Text: ${mAudioDataControl.mAudioList[0].ALBUM}\n" + e.toString())
-        }
+        //Set Main Title & Artist
+        text_home_last_played.text = album
+        text_home_last_played_artist.text = artist
+    }
+
+    //Get Main AudioBook Index
+    private fun getMainAudioBookIndex(): Int {
+        return 0
     }
 }

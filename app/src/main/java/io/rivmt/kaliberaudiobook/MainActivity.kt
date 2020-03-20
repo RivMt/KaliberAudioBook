@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         //Bottom Navigation
         bottom_navigation.setOnNavigationItemSelectedListener (mBottomNavigationSelected)
+        bottom_navigation.selectedItemId = R.id.navigation_home
     }
 
     //Bottom Navigation Bar Selection

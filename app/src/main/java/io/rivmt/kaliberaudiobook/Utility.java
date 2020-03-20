@@ -70,7 +70,7 @@ public class Utility {
                 return b;
             } catch (FileNotFoundException e) {
                 Log.d(TAG, e.toString());
-                return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_24dp);
+                return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_128dp);
             } finally {
                 try {
                     if (fd != null)
@@ -80,7 +80,7 @@ public class Utility {
                 }
             }
         }
-        return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_24dp);
+        return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_128dp);
     }
 
     public static Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {

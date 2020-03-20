@@ -8,4 +8,5 @@
     <string name="app_display_name" translatable="false">Kaliber</string>
     <string name="error_permission">Storage permissions are needed to load audiobook data</string>
     <string name="button_request_permission">Request</string>
+    <string name="home_recently_added">Recently Added</string>
 </resources>
