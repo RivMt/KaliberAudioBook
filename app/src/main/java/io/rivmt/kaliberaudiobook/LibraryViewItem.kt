@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import io.rivmt.kaliberaudiobook.utility.AudioData
+import io.rivmt.kaliberaudiobook.utility.Constants
 import io.rivmt.kaliberaudiobook.utility.Utility
 import kotlinx.android.synthetic.main.gridview_library.view.*
 
@@ -18,7 +19,7 @@ class LibraryViewItem @JvmOverloads constructor(context: Context, layout: Int, a
     }
 
     fun setGridViewData() {
-        gridview_item_image.setImageBitmap(Utility.getAlbumImage(context, Integer.parseInt(mAudioData.ALBUM_ID), 128))
+        gridview_item_image.setImageBitmap(Utility.getAlbumImage(context, Integer.parseInt(mAudioData.ALBUM_ID), Constants.INT_LIBRARY_STANDARD_IMAGE_SIZE))
         gridview_item_title.text = mAudioData.ALBUM
     }
 }

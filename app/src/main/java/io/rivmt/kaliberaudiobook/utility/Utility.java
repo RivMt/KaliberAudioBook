@@ -2,6 +2,7 @@ package io.rivmt.kaliberaudiobook.utility;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,13 +12,17 @@ import android.graphics.drawable.VectorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.ParcelFileDescriptor;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Objects;
 
 import io.rivmt.kaliberaudiobook.R;
 
@@ -37,7 +42,6 @@ public class Utility {
             try {
                 fd = res.openFileDescriptor(uri, "r");
 
-
                 // Compute the closest power-of-two scale factor
                 // and pass that to sBitmapOptionsCache.inSampleSize, which will
                 // result in faster decoding and better quality
@@ -55,8 +59,6 @@ public class Utility {
                 options.inJustDecodeBounds = false;
                 options.inSampleSize = scale;
 
-
-
                 Bitmap b = BitmapFactory.decodeFileDescriptor(
                         fd.getFileDescriptor(), null, options);
 
@@ -72,7 +74,7 @@ public class Utility {
                 return b;
             } catch (FileNotFoundException e) {
                 Log.d(TAG, e.toString());
-                return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_128dp);
+                return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), getPxFromDp(context, MAX_IMAGE_SIZE));
             } finally {
                 try {
                     if (fd != null)
@@ -82,12 +84,10 @@ public class Utility {
                 }
             }
         }
-        return getBitmapFromVectorDrawable(context, R.drawable.ic_book_black_128dp);
+        return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), getPxFromDp(context, MAX_IMAGE_SIZE));
     }
 
-    public static Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {
-        Drawable drawable = ContextCompat.getDrawable(context, drawableId);
-
+    public static Bitmap getBitmapFromVectorDrawable(Drawable drawable) {
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
                 drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -95,5 +95,23 @@ public class Utility {
         drawable.draw(canvas);
 
         return bitmap;
+    }
+
+    public static Bitmap getBitmapFromVectorDrawable(Drawable drawable, int size) {
+        //size's unit is px
+        Bitmap bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
+
+    public static int getPxFromDp(Context context, int dp) {
+        Display dis = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        dis.getMetrics(metrics);
+
+        return dp*metrics.densityDpi/160;
     }
 }

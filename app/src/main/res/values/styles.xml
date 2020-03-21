@@ -18,6 +18,7 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorContentDark</item>
         <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/textview_header_style</item>
     </style>
 
     <!-- AudioBook Name Theme -->

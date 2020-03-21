@@ -2,7 +2,7 @@
     <string name="app_name">Kaliber Audio Book</string>
     <string name="main_library">Library</string>
     <string name="main_home">Home</string>
-    <string name="main_menu">Folder</string>
+    <string name="main_menu">Storage</string>
     <string name="system_null" translatable="false"></string>
     <string name="desc_image_last_played">Last played</string>
     <string name="app_display_name" translatable="false">Kaliber</string>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import io.rivmt.kaliberaudiobook.utility.AudioDataControl
+import io.rivmt.kaliberaudiobook.utility.Constants
 import io.rivmt.kaliberaudiobook.utility.ListControl
 import io.rivmt.kaliberaudiobook.utility.Utility
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -53,7 +54,7 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
                 Utility.getAlbumImage(
                     context,
                     Integer.parseInt(album_id),
-                    160
+                    Constants.INT_LIBRARY_MAIN_IMAGE_SIZE
                 )
             )
         } catch (e:NullPointerException) {
