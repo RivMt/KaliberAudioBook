@@ -31,10 +31,11 @@ public class Utility {
     private static final String TAG = "Utility";
     private static final BitmapFactory.Options options = new BitmapFactory.Options();
 
-    public static Bitmap getAlbumImage(Context context, int album_id, int MAX_IMAGE_SIZE) {
+    public static Bitmap getAlbumImage(Context context, int album_id, int size) {
         // NOTE: There is in fact a 1 pixel frame in the ImageView used to
         // display this drawable. Take it into account now, so we don't have to
         // scale later.
+        int max_image_size = getPxFromDp(context, size);
         ContentResolver res = context.getContentResolver();
         Uri uri = Uri.parse("content://media/external/audio/albumart/" + album_id);
         if (uri != null) {
@@ -53,8 +54,8 @@ public class Utility {
                 BitmapFactory.decodeFileDescriptor(
                         fd.getFileDescriptor(), null, options);
                 int scale = 0;
-                if (options.outHeight > MAX_IMAGE_SIZE || options.outWidth > MAX_IMAGE_SIZE) {
-                    scale = (int) Math.pow(2, (int) Math.round(Math.log(MAX_IMAGE_SIZE / (double) Math.max(options.outHeight, options.outWidth)) / Math.log(0.5)));
+                if (options.outHeight > max_image_size || options.outWidth > max_image_size) {
+                    scale = (int) Math.pow(2, (int) Math.round(Math.log(max_image_size / (double) Math.max(options.outHeight, options.outWidth)) / Math.log(0.5)));
                 }
                 options.inJustDecodeBounds = false;
                 options.inSampleSize = scale;
@@ -64,8 +65,8 @@ public class Utility {
 
                 if (b != null) {
                     // finally rescale to exactly the size we need
-                    if (options.outWidth != MAX_IMAGE_SIZE || options.outHeight != MAX_IMAGE_SIZE) {
-                        Bitmap tmp = Bitmap.createScaledBitmap(b, MAX_IMAGE_SIZE, MAX_IMAGE_SIZE, true);
+                    if (options.outWidth != max_image_size || options.outHeight != max_image_size) {
+                        Bitmap tmp = Bitmap.createScaledBitmap(b, max_image_size, max_image_size, true);
                         b.recycle();
                         b = tmp;
                     }
@@ -74,7 +75,7 @@ public class Utility {
                 return b;
             } catch (FileNotFoundException e) {
                 Log.d(TAG, e.toString());
-                return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), getPxFromDp(context, MAX_IMAGE_SIZE));
+                return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), max_image_size);
             } finally {
                 try {
                     if (fd != null)
@@ -84,7 +85,7 @@ public class Utility {
                 }
             }
         }
-        return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), getPxFromDp(context, MAX_IMAGE_SIZE));
+        return getBitmapFromVectorDrawable(Objects.requireNonNull(context.getDrawable(R.drawable.ic_book_black_24dp)), max_image_size);
     }
 
     public static Bitmap getBitmapFromVectorDrawable(Drawable drawable) {
@@ -113,5 +114,9 @@ public class Utility {
         dis.getMetrics(metrics);
 
         return dp*metrics.densityDpi/160;
+    }
+
+    public static Bitmap resizeBitmap(Bitmap bitmap, int width, int height) {
+        return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
 }
