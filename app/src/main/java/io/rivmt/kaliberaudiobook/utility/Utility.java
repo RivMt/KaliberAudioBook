@@ -119,4 +119,10 @@ public class Utility {
     public static Bitmap resizeBitmap(Bitmap bitmap, int width, int height) {
         return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
+
+    public static int calculateNumberOfColumns(Context context, int columnWidthDp) { // For example columnWidthdp=180
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density;
+        return (int) (screenWidthDp / columnWidthDp + 0.5);
+    }
 }
