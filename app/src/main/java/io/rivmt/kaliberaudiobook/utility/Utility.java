@@ -1,4 +1,4 @@
-package io.rivmt.kaliberaudiobook;
+package io.rivmt.kaliberaudiobook.utility;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -18,6 +18,8 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import io.rivmt.kaliberaudiobook.R;
 
 public class Utility {
 

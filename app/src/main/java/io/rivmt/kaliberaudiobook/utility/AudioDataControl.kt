@@ -1,8 +1,9 @@
-package io.rivmt.kaliberaudiobook
+package io.rivmt.kaliberaudiobook.utility
 
 import android.content.ContentResolver
 import android.provider.MediaStore
 import android.util.Log
+import io.rivmt.kaliberaudiobook.utility.AudioData
 
 public class AudioDataControl(crv: ContentResolver) {
 

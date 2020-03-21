@@ -1,4 +1,4 @@
-package io.rivmt.kaliberaudiobook
+package io.rivmt.kaliberaudiobook.utility
 
 data class AudioData(
     val ID:String = "",

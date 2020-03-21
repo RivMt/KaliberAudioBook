@@ -13,4 +13,28 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <!-- Header TextView Theme -->
+    <style name="HeaderTheme">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorContentDark</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- AudioBook Name Theme -->
+    <style name="AudioBookTheme">
+        <item name="android:textColor">@color/colorContentDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+
+    </style>
+
+    <!-- AudioBook Name Theme -->
+    <style name="AuthorTheme">
+        <item name="android:textColor">@color/colorContent</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

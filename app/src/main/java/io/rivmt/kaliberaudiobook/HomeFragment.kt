@@ -7,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import io.rivmt.kaliberaudiobook.utility.AudioDataControl
+import io.rivmt.kaliberaudiobook.utility.ListControl
+import io.rivmt.kaliberaudiobook.utility.Utility
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment(contentResolver: ContentResolver): Fragment() {
 
-    private val mAudioDataControl: AudioDataControl = AudioDataControl(contentResolver)
+    private val mAudioDataControl: AudioDataControl =
+        AudioDataControl(contentResolver)
     private val TAG = "HomeFragment"
 
-    public override fun onCreateView(
+    private lateinit var mLibraryViewAdapter: LibraryViewAdapter
+
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +34,16 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         //Set Main Image
         val index = getMainAudioBookIndex()
         setMainAudioBook(mAudioDataControl.mAudioList[index].ALBUM_ID, mAudioDataControl.mAudioList[index].ALBUM, mAudioDataControl.mAudioList[index].ARTIST)
+
+        //Set Adapter
+        mLibraryViewAdapter = context?.let { LibraryViewAdapter(it) }!!
+        inputAudioDataToAdapter()
+        grid_recently_added.adapter = mLibraryViewAdapter
+    }
+
+    //Input Data to Adapter
+    private fun inputAudioDataToAdapter() {
+        mLibraryViewAdapter.mItems = ListControl().applyAlbumSort(mAudioDataControl.mAudioList)
     }
 
     //Set Main AudioBook
