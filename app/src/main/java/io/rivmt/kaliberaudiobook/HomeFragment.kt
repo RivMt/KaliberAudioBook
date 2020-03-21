@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import io.rivmt.kaliberaudiobook.utility.AudioDataControl
 import io.rivmt.kaliberaudiobook.utility.Constants
 import io.rivmt.kaliberaudiobook.utility.ListControl
@@ -19,7 +20,7 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         AudioDataControl(contentResolver)
     private val TAG = "HomeFragment"
 
-    private lateinit var mLibraryViewAdapter: LibraryViewAdapter
+    private lateinit var mLibraryViewAdapter: LibraryGridViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,9 +38,11 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         setMainAudioBook(mAudioDataControl.mAudioList[index].ALBUM_ID, mAudioDataControl.mAudioList[index].ALBUM, mAudioDataControl.mAudioList[index].ARTIST)
 
         //Set Adapter
-        mLibraryViewAdapter = context?.let { LibraryViewAdapter(it) }!!
-        inputAudioDataToAdapter()
+        val glm = GridLayoutManager(context, Utility.calculateNumberOfColumns(context, Constants.INT_LIBRARY_GRID_COLUMN_WIDTH))
+        grid_recently_added.layoutManager = glm
+        mLibraryViewAdapter = context?.let { LibraryGridViewAdapter(it) }!!
         grid_recently_added.adapter = mLibraryViewAdapter
+        inputAudioDataToAdapter()
     }
 
     //Input Data to Adapter
