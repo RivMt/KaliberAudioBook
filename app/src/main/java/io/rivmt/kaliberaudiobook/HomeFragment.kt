@@ -41,6 +41,18 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         val glm = GridLayoutManager(context, Utility.calculateNumberOfColumns(context, Constants.INT_LIBRARY_GRID_COLUMN_WIDTH))
         grid_recently_added.layoutManager = glm
         mLibraryViewAdapter = context?.let { LibraryGridViewAdapter(it) }!!
+
+        mLibraryViewAdapter.setOnItemLongClickListener(object :
+            LibraryGridViewAdapter.OnItemLongClickListener {
+            override fun onItemLongClick(v: View?, pos: Int) {
+                val fragment = AudioBookBottomDrawer()
+                fragment.show(fragmentManager, TAG)
+            }
+
+            override fun onLongClick(v: View?): Boolean {
+                TODO("Not yet implemented")
+            }
+        })
         grid_recently_added.adapter = mLibraryViewAdapter
         inputAudioDataToAdapter()
     }

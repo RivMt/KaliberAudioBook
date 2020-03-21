@@ -38,4 +38,13 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!-- Drawer Button Theme -->
+    <style name="DrawerButtonTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/colorContent</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:foregroundTint">@color/colorContent</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>

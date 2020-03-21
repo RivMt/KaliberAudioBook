@@ -9,4 +9,8 @@
     <string name="error_permission">Storage permissions are needed to load audiobook data</string>
     <string name="button_request_permission">Request</string>
     <string name="home_recently_added">Recently Added</string>
+    <string name="audiobook_title">Title</string>
+    <string name="audiobook_author">Author</string>
+    <string name="drawer_button_info">Show details</string>
+    <string name="drawer_button_play">Listen audiobook</string>
 </resources>

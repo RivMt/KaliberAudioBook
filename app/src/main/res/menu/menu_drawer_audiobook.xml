@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/menu_audiobook_play"
+            android:icon="@drawable/ic_play_circle_outline_black_24dp"
+            android:title="@string/drawer_button_play"/>
+    </group>
+    <group>
+        <item
+            android:id="@+id/menu_audiobook_info"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/drawer_button_info"/>
+    </group>
+</menu>
