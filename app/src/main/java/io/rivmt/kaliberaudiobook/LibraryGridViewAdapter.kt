@@ -2,6 +2,7 @@ package io.rivmt.kaliberaudiobook
 
 import android.content.Context
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ open class LibraryGridViewAdapter(context: Context): RecyclerView.Adapter<Librar
             mImageView.setOnLongClickListener {
                 val pos:Int = adapterPosition
                 mItemOnLongClickListener?.onItemLongClick(itemView, pos)
+                Log.d(TAG, "Item $pos has been long-clicked")
                 return@setOnLongClickListener true
             }
         }

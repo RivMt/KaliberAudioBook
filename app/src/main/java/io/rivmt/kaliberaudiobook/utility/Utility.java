@@ -22,6 +22,8 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 import io.rivmt.kaliberaudiobook.R;
@@ -124,5 +126,10 @@ public class Utility {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float screenWidthDp = displayMetrics.widthPixels / displayMetrics.density;
         return (int) (screenWidthDp / columnWidthDp + 0.5);
+    }
+
+    public static String getDateFromUnix(long input) {
+        Date date = new Date(input*1000L);
+        return DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
     }
 }

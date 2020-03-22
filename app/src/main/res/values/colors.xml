@@ -6,5 +6,6 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorContent">#444444</color>
     <color name="colorContentDark">#222222</color>
+    <color name="colorContainerButtonContent">#FFFFFF</color>
 
 </resources>

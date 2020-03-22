@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kaliber Audio Book</string>
     <string name="main_library">Library</string>
     <string name="main_home">Home</string>
     <string name="main_menu">Storage</string>
-    <string name="system_null" translatable="false"></string>
+    <string name="system_null" translatable="false" />
     <string name="desc_image_last_played">Last played</string>
     <string name="app_display_name" translatable="false">Kaliber</string>
     <string name="error_permission">Storage permissions are needed to load audiobook data</string>
@@ -13,4 +14,7 @@
     <string name="audiobook_author">Author</string>
     <string name="drawer_button_info">Show details</string>
     <string name="drawer_button_play">Listen audiobook</string>
+    <string name="audiobook_date">Date</string>
+    <string name="home_audiobook_play">Listen</string>
+    <string name="home_audiobook_info">Details</string>
 </resources>

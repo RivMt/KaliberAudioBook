@@ -11,6 +11,14 @@
     <!-- Material Button Theme -->
     <style name="ButtonTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Material Outline Button Theme -->
+    <style name="OutlineButtonTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/colorBackground</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <!-- Header TextView Theme -->
@@ -38,13 +46,31 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <!-- Drawer Button Theme -->
-    <style name="DrawerButtonTheme" parent="ThemeOverlay.AppCompat.Light">
+    <!-- AudioBook Name Theme -->
+    <style name="InfoAudioBookTheme">
+        <item name="android:textColor">@color/colorContentDark</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+
+    </style>
+
+    <!-- AudioBook Name Theme -->
+    <style name="InfoAuthorTheme">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- AudioBook Name Theme -->
+    <style name="InfoDateTheme">
         <item name="android:textColor">@color/colorContent</item>
-        <item name="android:textAlignment">textStart</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:foregroundTint">@color/colorContent</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:gravity">bottom|right</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
 </resources>

@@ -2,16 +2,14 @@ package io.rivmt.kaliberaudiobook
 
 import android.content.ContentResolver
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import io.rivmt.kaliberaudiobook.utility.AudioDataControl
-import io.rivmt.kaliberaudiobook.utility.Constants
-import io.rivmt.kaliberaudiobook.utility.ListControl
-import io.rivmt.kaliberaudiobook.utility.Utility
+import io.rivmt.kaliberaudiobook.utility.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment(contentResolver: ContentResolver): Fragment() {
@@ -33,6 +31,10 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Sort AudioDataList
+        mAudioDataControl.mAudioList = ListControl().applyDateSort(mAudioDataControl.mAudioList)
+        mAudioDataControl.mAudioList.sortByDescending { Integer.parseInt(it.DATE_MODIFIED) }
+
         //Set Main Image
         val index = getMainAudioBookIndex()
         setMainAudioBook(mAudioDataControl.mAudioList[index].ALBUM_ID, mAudioDataControl.mAudioList[index].ALBUM, mAudioDataControl.mAudioList[index].ARTIST)
@@ -46,6 +48,7 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
             LibraryGridViewAdapter.OnItemLongClickListener {
             override fun onItemLongClick(v: View?, pos: Int) {
                 val fragment = AudioBookBottomDrawer()
+                fragment.mSelectedItem = mLibraryViewAdapter.mItems[pos]
                 fragment.show(fragmentManager, TAG)
             }
 
@@ -59,7 +62,7 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
 
     //Input Data to Adapter
     private fun inputAudioDataToAdapter() {
-        mLibraryViewAdapter.mItems = ListControl().applyAlbumSort(mAudioDataControl.mAudioList)
+        mLibraryViewAdapter.mItems = ListControl().applyAlbumCategory(mAudioDataControl.mAudioList)
     }
 
     //Set Main AudioBook
