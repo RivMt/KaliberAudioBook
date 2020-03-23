@@ -17,4 +17,6 @@
     <string name="audiobook_date">Date</string>
     <string name="home_audiobook_play">Listen</string>
     <string name="home_audiobook_info">Details</string>
+    <string name="audiobook_progress">Read</string>
+    <string name="info_audiobook_option">Options</string>
 </resources>

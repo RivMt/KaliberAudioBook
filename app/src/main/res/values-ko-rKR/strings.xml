@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kaliber Audio Book</string>
+    <string name="main_library">보관함</string>
+    <string name="main_home">홈</string>
+    <string name="main_menu">저장소</string>
+    <string name="desc_image_last_played">최근에 들은 항목</string>
+    <string name="error_permission">오디오북을 불러오기 위해서는 저장소 권한이 필요합니다</string>
+    <string name="button_request_permission">요청</string>
+    <string name="home_recently_added">최근에 추가된 항목</string>
+    <string name="audiobook_title">제목</string>
+    <string name="audiobook_author">저자</string>
+    <string name="drawer_button_info">상세 정보 보기</string>
+    <string name="drawer_button_play">오디오북 듣기</string>
+    <string name="audiobook_date">날짜</string>
+    <string name="home_audiobook_play">듣기</string>
+    <string name="home_audiobook_info">상세 정보</string>
 </resources>

@@ -52,8 +52,21 @@
                 android:id="@+id/drawer_audiobook_date"
                 style="@style/InfoDateTheme"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/audiobook_date"/>
+
+            <TextView
+                android:id="@+id/drawer_audiobook_progress"
+                style="@style/InfoProgressTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/audiobook_progress"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
