@@ -1,23 +1,20 @@
 package io.rivmt.kaliberaudiobook
 
-import android.Manifest
-import android.content.ContentResolver
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.rivmt.kaliberaudiobook.fragment.HomeFragment
+import io.rivmt.kaliberaudiobook.fragment.LibraryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val mFragmentManager: FragmentManager = supportFragmentManager
     private lateinit var mHomeFragment: HomeFragment
-    private var mLibraryFragment: LibraryFragment = LibraryFragment()
+    private var mLibraryFragment: LibraryFragment =
+        LibraryFragment()
     private var mMenuFragment: MenuFragment = MenuFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Fragment
-        mHomeFragment = HomeFragment(contentResolver)
+        mHomeFragment =
+            HomeFragment(contentResolver)
 
         //Title
         setTitle(R.string.app_name)

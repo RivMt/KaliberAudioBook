@@ -1,14 +1,15 @@
-package io.rivmt.kaliberaudiobook
+package io.rivmt.kaliberaudiobook.fragment
 
 import android.content.ContentResolver
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import io.rivmt.kaliberaudiobook.LibraryGridViewAdapter
+import io.rivmt.kaliberaudiobook.R
 import io.rivmt.kaliberaudiobook.utility.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -39,15 +40,20 @@ class HomeFragment(contentResolver: ContentResolver): Fragment() {
         val index = getMainAudioBookIndex()
         setMainAudioBook(mAudioDataControl.mAudioList[index].ALBUM_ID, mAudioDataControl.mAudioList[index].ALBUM, mAudioDataControl.mAudioList[index].ARTIST)
 
-        //Set Adapter
+        //Set RecyclerView Adapter
         val glm = GridLayoutManager(context, Utility.calculateNumberOfColumns(context, Constants.INT_LIBRARY_GRID_COLUMN_WIDTH))
         grid_recently_added.layoutManager = glm
-        mLibraryViewAdapter = context?.let { LibraryGridViewAdapter(it) }!!
+        mLibraryViewAdapter = context?.let {
+            LibraryGridViewAdapter(
+                it
+            )
+        }!!
 
         mLibraryViewAdapter.setOnItemLongClickListener(object :
             LibraryGridViewAdapter.OnItemLongClickListener {
-            override fun onItemLongClick(v: View?, pos: Int) {
-                val fragment = AudioBookBottomDrawer()
+            override fun onItemLongClick(v: View?, pos: Int) {//Long Clicked Individual Item
+                val fragment =
+                    AudioBookBottomDrawer()
                 fragment.mSelectedItem = mLibraryViewAdapter.mItems[pos]
                 fragment.show(fragmentManager, TAG)
             }

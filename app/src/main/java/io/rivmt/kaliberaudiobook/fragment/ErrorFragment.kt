@@ -1,4 +1,4 @@
-package io.rivmt.kaliberaudiobook
+package io.rivmt.kaliberaudiobook.fragment
 
 import android.app.Activity
 import android.graphics.PorterDuff
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import io.rivmt.kaliberaudiobook.R
 import io.rivmt.kaliberaudiobook.utility.Constants
 import kotlinx.android.synthetic.main.fragment_error.*
 
